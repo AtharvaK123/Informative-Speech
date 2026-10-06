@@ -160,19 +160,7 @@ li[data-step].shown{translate:0 0}
 .slide[data-cur="0"] .trio figure:nth-child(1) .cap{opacity:0;transition:opacity .25s ease}
 .slide[data-cur="0"] .trio figure:nth-child(1) .hint span{font-size:1.4rem}
 
-/* closing curtains */
-.curtain{position:fixed;top:0;bottom:0;width:50.5%;z-index:10;pointer-events:none;
-  background:
-    linear-gradient(180deg,rgba(0,0,0,.35) 0,rgba(0,0,0,0) 14%,rgba(0,0,0,0) 80%,rgba(0,0,0,.45) 100%),
-    repeating-linear-gradient(90deg,#4E0610 0,#7C0D1C 2.2%,#A8182B 4.2%,#86101F 6.2%,#4E0610 8.4%);
-  transition:transform 1.8s cubic-bezier(.62,0,.22,1)}
-.curtain::after{content:"";position:absolute;top:0;bottom:0;width:10px;background:linear-gradient(90deg,#B8892B,#F2D27A,#B8892B)}
-.curtain.l{left:0;transform:translateX(-102%);box-shadow:18px 0 40px rgba(0,0,0,.55)}
-.curtain.l::after{right:0}
-.curtain.r{right:0;transform:translateX(102%);box-shadow:-18px 0 40px rgba(0,0,0,.55)}
-.curtain.r::after{left:0}
-.closing .curtain{transform:none}
-@media (prefers-reduced-motion:reduce){.curtain,.trio figure:nth-child(1) .frame{transition:none}}
+@media (prefers-reduced-motion:reduce){.trio figure:nth-child(1) .frame{transition:none}}
 </style>
 </head>
 <body>
@@ -328,7 +316,7 @@ li[data-step].shown{translate:0 0}
 </section>
 
 <!-- 9 · Conclusion -->
-<section class="slide t" aria-label="Conclusion" data-steps="2" data-curtain="2">
+<section class="slide t" aria-label="Conclusion" data-steps="1">
   <p class="topics"><span>Agentic AI</span><span>Robotics</span><span>Bioprinting</span></p>
   <div class="qs">
     <h1>What will we <span style="color:var(--peri)">see?</span></h1>
@@ -336,7 +324,6 @@ li[data-step].shown{translate:0 0}
   </div>
 </section>
 
-<div class="curtain l" aria-hidden="true"></div><div class="curtain r" aria-hidden="true"></div>
 <nav class="nav" aria-label="Slides">
   <button id="prev" type="button">Back</button>
   <button id="next" type="button">Next</button>
@@ -362,7 +349,6 @@ li[data-step].shown{translate:0 0}
     sl.querySelectorAll('[data-step]').forEach(function(el){el.classList.toggle('shown',st>=+el.getAttribute('data-step'))});
     sl.querySelectorAll('[data-only]').forEach(function(el){var on=st===+el.getAttribute('data-only');if(!on&&el.classList.contains('shown'))el.classList.add('was');if(on)el.classList.remove('was');el.classList.toggle('shown',on)});
     placeLead();sizeVideo();
-    var c=sl.getAttribute('data-curtain');document.body.classList.toggle('closing',c!==null&&st>=+c);
   }
   function sizeVideo(){
     var sl=s[i],fr=sl.querySelector('.trio figure:nth-child(1) .frame');if(!fr)return;
